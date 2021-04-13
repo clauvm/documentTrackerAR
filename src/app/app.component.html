@@ -1,0 +1,82 @@
+<!--<a-scene embedded arjs='sourceType: webcam;'>-->
+<!--    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>-->
+<!--    <a-marker-camera preset='hiro'></a-marker-camera>-->
+<!--</a-scene>-->
+
+
+<!--DRAW A LINE BETWEEN TWO MARKERS, IT CAN BE USED TO MEASURE THE DISTANCE-->
+<!--<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">-->
+<!--    <a-assets>-->
+<!--        <img id="grid" src="assets/images/border.png" />-->
+<!--    </a-assets>-->
+
+<!--    <a-marker type="barcode" value="0" id="m0" registerevents>-->
+<!--        <a-plane position="0 0 0"-->
+<!--                 rotation="-90 0 0"-->
+<!--                 material="color: white; transparent: true; opacity: 0.10;">-->
+<!--        </a-plane>-->
+<!--    </a-marker>-->
+
+<!--    <a-marker type="barcode" value="1" id="m1" registerevents>-->
+<!--        <a-plane position="0 0 0"-->
+<!--                 rotation="-90 0 0"-->
+<!--                 material="color: white; transparent: true; opacity: 0.10;">-->
+<!--        </a-plane>-->
+<!--    </a-marker>-->
+
+<!--    <a-marker type="pattern" url="assets/data/kanji.patt" id="baseMarker" >-->
+<!--    </a-marker>-->
+
+<!--    <a-entity camera></a-entity>-->
+
+<!--    <a-entity run></a-entity>-->
+
+<!--</a-scene>-->
+
+<!--HELLO WORLD TEXT-->
+<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">
+
+    <a-assets>
+        <a-asset-item id="exoFont" src="assets/fonts/exoBlack.typeface.json"></a-asset-item>
+        <img id="pixels" src="assets/images/pixels.png" />
+    </a-assets>
+
+    <!-- 2D text -->
+    <a-marker markerhandler type="pattern" url="assets/data/kanji.patt">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Left!" font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+
+    <!-- 3D text -->
+<!--    <a-marker type="pattern" url="assets/data/hiro.patt">-->
+
+<!--        &lt;!&ndash;-->
+<!--            using aframe-text-geometry component-->
+<!--            can set: bevelSize, bevelThickness, curveSegments, font, height, size, style, value.-->
+<!--            alignment (centering) may be tricky; try calculating bounding box and repositioning.-->
+<!--            for more info, see: https://www.npmjs.com/package/aframe-text-geometry-component-->
+<!--         &ndash;&gt;-->
+<!--        <a-entity text-geometry="value: Hello, world!; font: #exoFont;"-->
+<!--                  material="color: yellow; src: #pixels; repeat: 0.5 0.5;"-->
+<!--                  rotation="-90 0 0">-->
+<!--        </a-entity>-->
+
+<!--    </a-marker>-->
+
+    <a-entity camera></a-entity>
+
+</a-scene>
+
+
+<router-outlet></router-outlet>

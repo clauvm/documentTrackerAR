@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Webxr</title>
+    <base href="https://nik1168.github.io/DocumentTracker/">    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+    <script>
+        console.log("Init script to register events");
+        // let markerVisible = {m0: false, m1: false};
+
+        AFRAME.registerComponent('markerhandler', {
+            init: function () {
+                // let marker = this.el;
+                //
+                // console.log("Init event for marker handler");
+                // marker.addEventListener('markerFound', function () {
+                //     console.log("Found")
+                // });
+                //
+                // marker.addEventListener('markerLost', function () {
+                //     console.log("Lost")
+                // });
+                this.marker = document.querySelector("#m0");
+                this.markerA = document.querySelector("#m1");
+                this.markerB = document.querySelector("#m2");
+                this.markerC = document.querySelector("#m3");
+                this.markerD = document.querySelector("#m4");
+                this.markerF = document.querySelector("#m5");
+                // this.marker1 = document.querySelector("#hiThere");
+                // this.marker1.addEventListener('markerFound', function () {
+                //     console.log("Found")
+                // });
+                //
+                // this.marker1.addEventListener('markerLost', function () {
+                //     console.log("Lost")
+                // });
+                this.markerVisible = false;
+
+                console.log("End of marker handler event")
+            },
+            tick: function (time, deltaTime) {
+                if (!this.marker) return;
+                if (this.marker.object3D.visible) {
+                    console.log("Entro aqui papa");
+                    document.getElementById("textDirection").innerHTML = "Left";
+                    if (!this.markerVisible) {
+                        // marker detected
+                        this.markerVisible = true
+                    }
+                }
+                // else {
+                //     // document.getElementById("textDirection").innerHTML = "Read Marker";
+                //     if (this.markerVisbile) {
+                //         // lost sight of the marker
+                //         this.markerVisible = false
+                //     }
+                // }
+                if (this.markerA.object3D.visible) {
+                    document.getElementById("textDirection").innerHTML = "Left";
+
+                }
+                if (this.markerB.object3D.visible) {
+                    document.getElementById("textDirection").innerHTML = "Turn Around";
+                }
+                if (this.markerC.object3D.visible) {
+                    document.getElementById("textDirection").innerHTML = "Found";
+                }
+            }
+        });
+
+        AFRAME.registerComponent('registerevents', {
+            init: function () {
+                let marker = this.el;
+
+                marker.addEventListener('markerFound', function () {
+                    markerVisible[marker.id] = true;
+                });
+
+                marker.addEventListener('markerLost', function () {
+                    markerVisible[marker.id] = false;
+                });
+            },
+            tick: function (time, deltaTime) {
+                console.log("Tick")
+            }
+        });
+
+        AFRAME.registerComponent('run', {
+            init: function () {
+                this.m0 = document.querySelector("#m0");
+                this.m1 = document.querySelector("#m1");
+                this.p0 = new THREE.Vector3();
+                this.p1 = new THREE.Vector3();
+
+                this.geometry = new THREE.Geometry();
+                this.geometry.vertices.push(new THREE.Vector3(-1, -1, -1));
+                this.geometry.vertices.push(new THREE.Vector3(1, 1, 1));
+                this.material = new THREE.LineBasicMaterial({color: 0xFF0000});
+                this.line = new THREE.Line(this.geometry, this.material);
+                let scene = document.querySelector('a-scene').object3D;
+                scene.add(this.line);
+            },
+
+            tick: function (time, deltaTime) {
+                if (markerVisible["m0"] && markerVisible["m1"]) {
+                    this.m0.object3D.getWorldPosition(this.p0);
+                    this.m1.object3D.getWorldPosition(this.p1);
+                    this.geometry.vertices[0] = this.p0;
+                    this.geometry.vertices[1] = this.p1;
+                    this.geometry.verticesNeedUpdate = true;
+                    this.line.visible = true;
+                } else {
+                    this.line.visible = false;
+                }
+            }
+        });
+    </script>
+<link rel="stylesheet" href="styles.09e2c710755c8867a460.css"></head>
+<body>
+<!--<app-root></app-root>-->
+<div style='position: fixed; bottom: 10px; right: 40px; width:100%; text-align: right; z-index: 1;'>
+    <button style="font-size: xx-large">
+        <span id="textDirection">Read Marker</span>
+    </button>
+</div>
+<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">
+
+    <a-assets>
+        <a-asset-item id="exoFont" src="assets/fonts/exoBlack.typeface.json"></a-asset-item>
+        <img id="pixels" src="assets/images/pixels.png" />
+    </a-assets>
+
+    <!-- 2D text -->
+<!--    <a-marker markerhandler id="hiThere" type="pattern" url="assets/data/kanji.patt">-->
+    <a-marker markerhandler type="pattern" url="assets/data/kanji.patt" id="m0">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+    <a-marker markerhandler type="pattern" url="assets/data/letterA.patt" id="m1">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+    <a-marker markerhandler type="pattern" url="assets/data/letterB.patt" id="m2">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+    <a-marker markerhandler type="pattern" url="assets/data/letterC.patt" id="m3">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+    <a-marker markerhandler type="pattern" url="assets/data/letterD.patt" id="m4">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+    <a-marker markerhandler type="pattern" url="assets/data/letterF.patt" id="m5">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+
+    <!-- 3D text -->
+    <!--    <a-marker type="pattern" url="assets/data/hiro.patt">-->
+
+    <!--        &lt;!&ndash;-->
+    <!--            using aframe-text-geometry component-->
+    <!--            can set: bevelSize, bevelThickness, curveSegments, font, height, size, style, value.-->
+    <!--            alignment (centering) may be tricky; try calculating bounding box and repositioning.-->
+    <!--            for more info, see: https://www.npmjs.com/package/aframe-text-geometry-component-->
+    <!--         &ndash;&gt;-->
+    <!--        <a-entity text-geometry="value: Hello, world!; font: #exoFont;"-->
+    <!--                  material="color: yellow; src: #pixels; repeat: 0.5 0.5;"-->
+    <!--                  rotation="-90 0 0">-->
+    <!--        </a-entity>-->
+
+    <!--    </a-marker>-->
+
+    <a-entity camera></a-entity>
+
+</a-scene>
+
+<script src="runtime-es2015.1eba213af0b233498d9d.js" type="module"></script><script src="runtime-es5.1eba213af0b233498d9d.js" nomodule defer></script><script src="polyfills-es5.9e286f6d9247438cbb02.js" nomodule defer></script><script src="polyfills-es2015.690002c25ea8557bb4b0.js" type="module"></script><script src="main-es2015.f12583e191b3192f8aff.js" type="module"></script><script src="main-es5.f12583e191b3192f8aff.js" nomodule defer></script></body>
+</html>
