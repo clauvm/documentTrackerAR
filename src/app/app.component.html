@@ -33,50 +33,54 @@
 
 <!--</a-scene>-->
 
-<!--HELLO WORLD TEXT-->
-<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">
+<!--&lt;!&ndash;HELLO WORLD TEXT&ndash;&gt;-->
+<!--<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">-->
 
-    <a-assets>
-        <a-asset-item id="exoFont" src="assets/fonts/exoBlack.typeface.json"></a-asset-item>
-        <img id="pixels" src="assets/images/pixels.png" />
-    </a-assets>
+<!--    <a-assets>-->
+<!--        <a-asset-item id="exoFont" src="assets/fonts/exoBlack.typeface.json"></a-asset-item>-->
+<!--        <img id="pixels" src="assets/images/pixels.png" />-->
+<!--    </a-assets>-->
 
-    <!-- 2D text -->
-    <a-marker markerhandler type="pattern" url="assets/data/kanji.patt">
+<!--    &lt;!&ndash; 2D text &ndash;&gt;-->
+<!--    <a-marker markerhandler type="pattern" url="assets/data/kanji.patt">-->
 
-        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
-        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+<!--        &lt;!&ndash; positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  &ndash;&gt;-->
+<!--        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>-->
 
-        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
-        <a-text value="Left!" font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+<!--        &lt;!&ndash; for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md &ndash;&gt;-->
+<!--        <a-text value="Left!" font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>-->
 
-        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
-        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+<!--        &lt;!&ndash; positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting &ndash;&gt;-->
+<!--        &lt;!&ndash; <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> &ndash;&gt;-->
 
 
-        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
-
-    </a-marker>
-
-    <!-- 3D text -->
-<!--    <a-marker type="pattern" url="assets/data/hiro.patt">-->
-
-<!--        &lt;!&ndash;-->
-<!--            using aframe-text-geometry component-->
-<!--            can set: bevelSize, bevelThickness, curveSegments, font, height, size, style, value.-->
-<!--            alignment (centering) may be tricky; try calculating bounding box and repositioning.-->
-<!--            for more info, see: https://www.npmjs.com/package/aframe-text-geometry-component-->
-<!--         &ndash;&gt;-->
-<!--        <a-entity text-geometry="value: Hello, world!; font: #exoFont;"-->
-<!--                  material="color: yellow; src: #pixels; repeat: 0.5 0.5;"-->
-<!--                  rotation="-90 0 0">-->
-<!--        </a-entity>-->
+<!--        &lt;!&ndash; avoiding z-fighting is difficult; may want to render canvas to text instead &ndash;&gt;-->
 
 <!--    </a-marker>-->
 
-    <a-entity camera></a-entity>
+<!--    &lt;!&ndash; 3D text &ndash;&gt;-->
+<!--&lt;!&ndash;    <a-marker type="pattern" url="assets/data/hiro.patt">&ndash;&gt;-->
 
-</a-scene>
+<!--&lt;!&ndash;        &lt;!&ndash;&ndash;&gt;-->
+<!--&lt;!&ndash;            using aframe-text-geometry component&ndash;&gt;-->
+<!--&lt;!&ndash;            can set: bevelSize, bevelThickness, curveSegments, font, height, size, style, value.&ndash;&gt;-->
+<!--&lt;!&ndash;            alignment (centering) may be tricky; try calculating bounding box and repositioning.&ndash;&gt;-->
+<!--&lt;!&ndash;            for more info, see: https://www.npmjs.com/package/aframe-text-geometry-component&ndash;&gt;-->
+<!--&lt;!&ndash;         &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <a-entity text-geometry="value: Hello, world!; font: #exoFont;"&ndash;&gt;-->
+<!--&lt;!&ndash;                  material="color: yellow; src: #pixels; repeat: 0.5 0.5;"&ndash;&gt;-->
+<!--&lt;!&ndash;                  rotation="-90 0 0">&ndash;&gt;-->
+<!--&lt;!&ndash;        </a-entity>&ndash;&gt;-->
 
+<!--&lt;!&ndash;    </a-marker>&ndash;&gt;-->
 
-<router-outlet></router-outlet>
+<!--    <a-entity camera></a-entity>-->
+
+<!--</a-scene>-->
+<div class="personal-library-title">
+    <h1>{{title}}</h1>
+</div>
+<div class="app-pages">
+    <router-outlet></router-outlet>
+</div>
+

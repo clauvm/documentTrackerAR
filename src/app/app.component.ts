@@ -7,7 +7,7 @@ import {debounceTime} from 'rxjs/operators';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    title = 'webxr';
+    title = 'My Library App';
     markerVisible = {m0: false, m1: false};
 
     ngOnInit(): void {
