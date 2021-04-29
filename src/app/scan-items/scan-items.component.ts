@@ -19,8 +19,9 @@ export class ScanItemsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Init script to register events');
+    console.log(document);
     const markerVisible = {m0: false, m1: false};
-    custom.test1();
+    custom.test1(document);
 
     // AFRAME.registerComponent('markerhandler', {
     //   init() {
@@ -83,7 +84,7 @@ export class ScanItemsComponent implements OnInit {
     //   }
     // });
 
-    // AFRAME.registerComponent('registerevents', {
+    // document.AFRAME.registerComponent('registerevents', {
     //   init() {
     //     const marker = this.el;
     //
