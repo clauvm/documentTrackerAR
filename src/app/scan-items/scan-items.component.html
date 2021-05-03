@@ -1,23 +1,18 @@
-<!--<!doctype html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="utf-8">-->
-<!--    <title>Webxr</title>-->
-<!--&lt;!&ndash;    <base href="/">&ndash;&gt;-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    <link rel="icon" type="image/x-icon" href="favicon.ico">-->
-<!--    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>-->
-<!--    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>-->
-<!--</head>-->
-<!--<body>-->
-<!--<app-root></app-root>-->
 <div style='position: fixed; bottom: 10px; right: 40px; width:100%; text-align: right; z-index: 1;'>
-    <button style="font-size: xx-large" (click)="testFunction()">
+    <button style="font-size: xx-large">
         <span id="textDirection">Read Marker 1</span>
     </button>
 
 </div>
 <a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">
+
+<!--<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">-->
+<!--    <a-marker hello-world type="pattern" url="assets/data/kanji.patt" id="m0">-->
+<!--        <a-box cursor-listener position="0 0 0" color="skyblue"></a-box>-->
+<!--        <a-text id="text-box" value="Clicked!" geometry='primitive: plane'></a-text>-->
+<!--    </a-marker>-->
+<!--    <a-entity camera></a-entity>-->
+<!--</a-scene>-->
 
     <a-assets>
         <a-asset-item id="exoFont" src="assets/fonts/exoBlack.typeface.json"></a-asset-item>
@@ -117,66 +112,12 @@
 
     </a-marker>
 
-    <!-- 3D text -->
-    <!--    <a-marker type="pattern" url="assets/data/hiro.patt">-->
-
-    <!--        &lt;!&ndash;-->
-    <!--            using aframe-text-geometry component-->
-    <!--            can set: bevelSize, bevelThickness, curveSegments, font, height, size, style, value.-->
-    <!--            alignment (centering) may be tricky; try calculating bounding box and repositioning.-->
-    <!--            for more info, see: https://www.npmjs.com/package/aframe-text-geometry-component-->
-    <!--         &ndash;&gt;-->
-    <!--        <a-entity text-geometry="value: Hello, world!; font: #exoFont;"-->
-    <!--                  material="color: yellow; src: #pixels; repeat: 0.5 0.5;"-->
-    <!--                  rotation="-90 0 0">-->
-    <!--        </a-entity>-->
-
-    <!--    </a-marker>-->
 
     <a-entity camera></a-entity>
 
 </a-scene>
 
-<!--<a-scene embedded arjs='sourceType: webcam;'>-->
-<!--    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>-->
-<!--    <a-marker-camera preset='hiro'></a-marker-camera>-->
-<!--</a-scene>-->
-
-
-<!--DRAW A LINE BETWEEN TWO MARKERS, IT CAN BE USED TO MEASURE THE DISTANCE-->
-<!--<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">-->
-<!--    <a-assets>-->
-<!--        <img id="grid" src="assets/images/border.png" />-->
-<!--    </a-assets>-->
-
-<!--    <a-marker type="barcode" value="0" id="m0" registerevents>-->
-<!--        <a-plane position="0 0 0"-->
-<!--                 rotation="-90 0 0"-->
-<!--                 material="color: white; transparent: true; opacity: 0.10;">-->
-<!--        </a-plane>-->
-<!--    </a-marker>-->
-
-<!--    <a-marker type="barcode" value="1" id="m1" registerevents>-->
-<!--        <a-plane position="0 0 0"-->
-<!--                 rotation="-90 0 0"-->
-<!--                 material="color: white; transparent: true; opacity: 0.10;">-->
-<!--        </a-plane>-->
-<!--    </a-marker>-->
-
-<!--    <a-marker type="pattern" url="assets/data/kanji.patt" id="baseMarker" >-->
-<!--    </a-marker>-->
-
-<!--    <a-entity camera></a-entity>-->
-
-<!--    <a-entity run></a-entity>-->
-
-<!--</a-scene>-->
-
-<!--HELLO WORLD TEXT-->
-
-
-
-<router-outlet></router-outlet>
+<!--<router-outlet></router-outlet>-->
 
 
 <!--</body>-->

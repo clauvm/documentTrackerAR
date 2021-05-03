@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AFRAME} from 'aframe';
+// import * as AFRAME from 'aframe';
 import * as THREE from 'three';
 export function myTest() {
     alert('Welcome to custom js');
@@ -7,26 +7,15 @@ export function myTest() {
 
 export function test1(anotherDocument){
     console.log('entro a test1');
-    // let b = anotherDocument.querySelector('a-marker').setAttribute('markerhandler', '')
+    // let b = anotherDocument.querySelector('a-marker');
     // console.log(b);
+    // AFRAME.registerComponent('hello-world', {
+    //     init: function () {
+    //         console.log('Hello, World!');
+    //     }
+    // });
+    // document.querySelector('a-scene').setAttribute('hello-world', '');
 
-    document.AFRAME.registerComponent('registerevents', {
-        init: function () {
-            console.log("nice TRYYYYY");
-            let marker = this.el;
-
-            marker.addEventListener('markerFound', function () {
-                markerVisible[marker.id] = true;
-            });
-
-            marker.addEventListener('markerLost', function () {
-                markerVisible[marker.id] = false;
-            });
-        },
-        tick: function (time, deltaTime) {
-            console.log("Tick")
-        }
-    });
     // anotherDocument.querySelector('a-scene').setAttribute('markerhandler', {
     //     init: function (){
     //         // let marker = this.el;

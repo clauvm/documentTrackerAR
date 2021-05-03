@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AFRAME} from 'aframe';
+// import * as AFRAME from 'aframe';
 import * as THREE from 'three';
 import * as custom from '../../assets/extra-functions/test.js';
 
 
 @Component({
   selector: 'app-scan-items',
-  templateUrl: './scan-items.component.html',
+  templateUrl: './index.html',
   styleUrls: ['./scan-items.component.scss']
 })
 export class ScanItemsComponent implements OnInit {
@@ -19,13 +19,22 @@ export class ScanItemsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Init script to register events');
-    console.log(document);
     const markerVisible = {m0: false, m1: false};
-    custom.test1(document);
+    // custom.test1(document);
+    // AFRAME.registerComponent('hello-world', {
+    //   init() {
+    //     console.log('Hello, World!');
+    //   }
+    // });
+    // AFRAME.registerComponent('markerhandler', {
+    //   init() {
+    //     console.log('Hellooooooooooo');
+    //   }
+    // });
 
     // AFRAME.registerComponent('markerhandler', {
     //   init() {
-    //     console.log("it's here!!!!");
+    //     console.log('it\'s here!!!!');
     //     // let marker = this.el;
     //     //
     //     // console.log("Init event for marker handler");
@@ -83,8 +92,8 @@ export class ScanItemsComponent implements OnInit {
     //     }
     //   }
     // });
-
-    // document.AFRAME.registerComponent('registerevents', {
+    //
+    // AFRAME.registerComponent('registerevents', {
     //   init() {
     //     const marker = this.el;
     //
@@ -100,7 +109,7 @@ export class ScanItemsComponent implements OnInit {
     //     console.log('Tick');
     //   }
     // });
-
+    //
     // AFRAME.registerComponent('run', {
     //   init() {
     //     this.m0 = this.querySelector('#m0');
