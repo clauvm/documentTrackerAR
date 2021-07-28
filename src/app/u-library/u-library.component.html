@@ -1,1 +1,14 @@
-<p>u-library works!</p>
+<div class="contacts-list">
+    <mat-grid-list cols="3" rowHeight="1:2,5">
+        <mat-grid-tile *ngFor="let book of books" >
+            <div class="element-full">
+                <div class="element-image">
+                    <img style="height: 100% !important;" src="{{book.volumeInfo.imageLinks.thumbnail}}" class="tile-image">
+                </div>
+                <div class="element-label">
+                    <p class="something">{{book.volumeInfo.title}}</p>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

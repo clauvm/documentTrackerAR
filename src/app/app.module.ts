@@ -8,6 +8,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ULibraryComponent } from './u-library/u-library.component';
 import { AddItemsComponent } from './add-items/add-items.component';
 import { ScanItemsComponent } from './scan-items/scan-items.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ScanItemsComponent } from './scan-items/scan-items.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule,
+    MatGridListModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
