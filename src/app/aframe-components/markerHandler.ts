@@ -29,7 +29,7 @@ function initialise(){
             // });
             this.markerVisible = false;
 
-            console.log('End of marker handler event');
+            console.log('End of marker handler event market handler');
         },
         tick(time, deltaTime) {
             if (!this.marker) { return; }

@@ -78,7 +78,41 @@
 
 <!--</a-scene>-->
 <div class="personal-library-title">
-    <h1>{{title}}</h1>
+<!--    <button type="button" class="hamburger"></button>-->
+<!--    <h1>{{title}}</h1>-->
+    <nav class="navbar">
+        <a href="#" class="nav-logo">{{title}}</a>
+        <div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <label class="nav-link">Search</label>
+                    <ul>
+                        <li>
+                            <label class="nav-link">t A</label>
+                        </li>
+                        <li>
+                            <label class="nav-link">t B</label>
+                        </li>
+                        <li>
+                            <label class="nav-link">t C</label>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <label class="nav-link">Add new item</label>
+                </li>
+                <li class="nav-item" routerLink="/scanBooks">
+                    <label class="nav-link">Search in Map</label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="hamburger">
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+            <span class="burger-bar"></span>
+        </div>
+    </nav>
 </div>
 <div class="app-pages">
     <router-outlet></router-outlet>

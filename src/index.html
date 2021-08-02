@@ -41,7 +41,7 @@
                 // });
                 this.markerVisible = false;
 
-                console.log("End of marker handler event")
+                console.log("End of marker handler event src/index")
             },
             tick: function (time, deltaTime) {
                 if (!this.marker) return;
@@ -64,10 +64,10 @@
                     document.getElementById("textDirection").innerHTML = "Left";
 
                 }
-                if (this.markerB.object3D.visible) {
+                if (this.markerC.object3D.visible) {
                     document.getElementById("textDirection").innerHTML = "Turn Around";
                 }
-                if (this.markerC.object3D.visible) {
+                if (this.markerB.object3D.visible) {
                     document.getElementById("textDirection").innerHTML = "Found";
                 }
             }

@@ -6,7 +6,7 @@ import * as custom from '../../assets/extra-functions/test.js';
 
 @Component({
   selector: 'app-scan-items',
-  templateUrl: './index.html',
+  templateUrl: './scan-items.component.html',
   styleUrls: ['./scan-items.component.scss']
 })
 export class ScanItemsComponent implements OnInit {
