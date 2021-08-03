@@ -43,8 +43,6 @@ export class LibraryService {
                     catchError(this.handleError<any>('getHeroes', {message: 'error', data: []}))
                 )
                 .subscribe((response) => {
-                    console.log('este es el servicio');
-                    console.log(response.items[0].volumeInfo.title);
                     const books: Book[] = response.items;
                     subscriber.next(books);
                 }, (error) => {

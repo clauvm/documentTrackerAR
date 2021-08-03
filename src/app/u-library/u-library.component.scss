@@ -6,8 +6,8 @@ a {
 }
 
 button {
-  height: 55px;
-  font-size: 1em;
+  height: 23px;
+  font-size: 0.9em;
   border-radius: 8px;
   margin-left: 5px;
   vertical-align: bottom;
@@ -50,9 +50,10 @@ button {
 }
 
 .search {
-  position: relative;
+  position: initial;
   width: 100%;
   text-align: center;
+  height: 0%;
 }
 
 .search input
@@ -63,23 +64,30 @@ button {
 .search .fa-search {
   position: relative;
   top: 20%;
-  left: 5%;
-  font-size: 2em;
+  left: 6%;
+  font-size: 1em;
 }
 .search-input{
-  width: 75%;
+  width: 80%;
   vertical-align: center;
-  height: 50px;
-  font-size: 1.4em;
+  height: 20px;
+  font-size: 1em;
 }
 
-.contacts-list{
+.buttons-search {
+  text-align: center;
+  margin-top: 10%;
+  height: 5%;
+
+}
+
+.books-list{
   width: 90%;
   margin: auto;
   //border: 1px solid;
-  margin-top: 3%;
+  //margin-top: 3%;
   //background-color: white;
-  height: 600px;
+  height: 90%;
   overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
 }

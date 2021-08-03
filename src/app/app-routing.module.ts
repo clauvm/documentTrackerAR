@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'library', component: ULibraryComponent},
   {path: 'newDocument', component: AddItemsComponent},
   {path: 'scanBooks', component: ScanItemsComponent},
-  {path: '', redirectTo: '/homePage', pathMatch: 'full'}
+  {path: '', redirectTo: '/library', pathMatch: 'full'}
 ];
 
 @NgModule({

@@ -14,6 +14,8 @@ export class ULibraryComponent implements OnInit {
     private searchUpdated: Subject<any> = new Subject();
 
   books: Book[];
+  searchResult: any;
+
 
   constructor(private libraryService: LibraryService) { }
 
@@ -46,10 +48,33 @@ export class ULibraryComponent implements OnInit {
             this.books = books;
             console.log('component');
             console.log(books);
-            // console.log(Book[]);
             observer.next();
           });
     });
+  }
+  searchBooks(): void {
+      console.log('search method');
+      console.log(this.books);
+      const newList = this.books;
+      const testy = [];
+      const a = document.getElementById('trying');
+      const form = a.querySelector('input[name="optradio"]:checked') as HTMLFormElement;
+      const log = document.querySelector('#log');
+      console.log(form);
+      console.log(form.value);
+      // tslint:disable-next-line:only-arrow-functions
+      newList.map(function(item): void{
+          const test = item.volumeInfo;
+          console.log(test.title.toLowerCase().includes('Day'.toLowerCase()));
+          // console.log(testy);
+          if (test.title.toLowerCase().includes('book'.toLowerCase()) || test.description.toLowerCase().includes('book'.toLowerCase())){
+              testy.push(item);
+              console.log('test' + test.description);
+          }
+      });
+      this.searchResult = testy;
+      console.log('new list');
+      console.log(this.searchResult);
   }
 
 }

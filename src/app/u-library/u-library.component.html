@@ -1,5 +1,29 @@
-<div class="contacts-list">
-    <mat-grid-list cols="3" rowHeight="1:2,5">
+<div class="search">
+    <span class="fa fa-search"></span>
+    <input type="text"
+           class="search-input"
+           placeholder="Search">
+</div>
+<div class="buttons-search">
+    <div style="display: inline-flex">
+        <form id="trying">
+            <input type="radio" name="optradio" id="title" value="title" checked>
+            <label class="radio-inline">Title</label>
+            <input type="radio" name="optradio" id="category" value="category">
+            <label class="radio-inline">Category</label>
+            <input type="radio" name="optradio" id="topic" value="topic">
+            <label class="radio-inline">Topic</label>
+        </form>
+    </div>
+    <div style="display: inline-flex; padding-left: 5%">
+        <button class="add-new-button" (click)="searchBooks()">
+            <a>Search</a>
+        </button>
+    </div>
+
+</div>
+<div class="books-list">
+    <mat-grid-list cols="3" rowHeight="1:2,5" style="height: 50%; overflow-y: scroll">
         <mat-grid-tile *ngFor="let book of books" >
             <div class="element-full">
                 <div class="element-image">
