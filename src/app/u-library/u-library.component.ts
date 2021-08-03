@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {Book} from '../interfaces/book';
 import {LibraryService} from '../library.service';
 import {Observable, Subject} from 'rxjs';
@@ -10,9 +10,8 @@ import {debounceTime} from 'rxjs/operators';
   styleUrls: ['./u-library.component.scss']
 })
 export class ULibraryComponent implements OnInit {
-
-    private searchUpdated: Subject<any> = new Subject();
-
+  private searchUpdated: Subject<any> = new Subject();
+  searchWord: string;
   books: Book[];
   searchResult: any;
 
@@ -27,14 +26,14 @@ export class ULibraryComponent implements OnInit {
                     debounceTime(300)
                 )
                 .subscribe((val: string) => {
-                    // if (val === '') {
+                    if (val === '') {
                         console.log('entra aca');
                         // this.getContacts().subscribe((contacts) => {});
                         this.getBooks().subscribe((books) => {});
-                    // } else {
+                    } else {
                     //     console.log('segunda opcion');
-                    //     this.getContactsByKeyword(val).subscribe((contacts) => {});
-                    // }
+                        this.searchBooks();
+                    }
                 });
         });
   }
@@ -53,28 +52,67 @@ export class ULibraryComponent implements OnInit {
     });
   }
   searchBooks(): void {
-      console.log('search method');
-      console.log(this.books);
-      const newList = this.books;
-      const testy = [];
-      const a = document.getElementById('trying');
-      const form = a.querySelector('input[name="optradio"]:checked') as HTMLFormElement;
-      const log = document.querySelector('#log');
-      console.log(form);
-      console.log(form.value);
-      // tslint:disable-next-line:only-arrow-functions
-      newList.map(function(item): void{
-          const test = item.volumeInfo;
-          console.log(test.title.toLowerCase().includes('Day'.toLowerCase()));
-          // console.log(testy);
-          if (test.title.toLowerCase().includes('book'.toLowerCase()) || test.description.toLowerCase().includes('book'.toLowerCase())){
-              testy.push(item);
-              console.log('test' + test.description);
+      // return new Observable<any>(observer => {
+          console.log('search method');
+          console.log(this.searchWord);
+          if (this.searchWord) {
+              console.log('entro al if');
+              // const searchedValue: ;
+              const newList = this.books;
+              const testy = [];
+              const form = document.querySelector('input[name="optradio"]:checked') as HTMLFormElement;
+              const wordRequested = this.searchWord.toLowerCase();
+              if (form.value === 'title'){
+                  console.log('entro a title');
+                  console.log(wordRequested);
+                  // tslint:disable-next-line:only-arrow-functions
+                  newList.map(function(item): void {
+                      const test = item.volumeInfo;
+                      // tslint:disable-next-line:max-line-length
+                      console.log(test.title);
+                      if (test.title.toLowerCase().includes(wordRequested)) {
+                          testy.push(item);
+                          console.log('test' + test.description);
+                      }
+                  });
+              } else if (form.value === 'topic'){
+                  // tslint:disable-next-line:only-arrow-functions
+                  newList.map(function(item): void {
+                      const test = item.volumeInfo;
+                      // tslint:disable-next-line:max-line-length
+                      if (test.title.toLowerCase().includes(wordRequested.toLowerCase()) || test.description.toLowerCase().includes(wordRequested.toLowerCase())) {
+                          testy.push(item);
+                          console.log('test' + test.description);
+                      }
+                  });
+              } else {
+                  // tslint:disable-next-line:only-arrow-functions
+                  newList.map(function(item): void {
+                      // let test: string[] = [];
+                      // test = item.volumeInfo.categories;
+                      // console.log(test);
+                      // console.log(test.includes(wordRequested));
+                      // tslint:disable-next-line:max-line-length
+                      // for (const i = 0; i< test.categories.length; i++){
+                      //     if (test.categories[i] === wordRequested) {
+                      //         testy.push(item);
+                      //         console.log('test' + test.description);
+                      //     }
+                      // }
+                      // if (test.categories.find(wordRequested)) {
+                      //     testy.push(item);
+                      //     console.log('test' + test.description);
+                      // }
+                  });
+              }
+              this.searchResult = testy;
+              console.log('new list');
+              // console.log(this.searchResult);
+              this.books = testy;
+              console.log(this.books);
+          } else {
+              this.getBooks();
           }
-      });
-      this.searchResult = testy;
-      console.log('new list');
-      console.log(this.searchResult);
   }
 
 }

@@ -10,6 +10,7 @@ import { AddItemsComponent } from './add-items/add-items.component';
 import { ScanItemsComponent } from './scan-items/scan-items.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AddItemsComponent,
     ScanItemsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatMenuModule,
-    HttpClientModule,
-    MatGridListModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatMenuModule,
+        HttpClientModule,
+        MatGridListModule,
+        FormsModule
+    ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]

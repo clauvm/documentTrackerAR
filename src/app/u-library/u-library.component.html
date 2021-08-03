@@ -1,12 +1,13 @@
 <div class="search">
     <span class="fa fa-search"></span>
-    <input type="text"
+    <input [(ngModel)]="searchWord"
+           type="text"
            class="search-input"
            placeholder="Search">
 </div>
 <div class="buttons-search">
     <div style="display: inline-flex">
-        <form id="trying">
+        <form>
             <input type="radio" name="optradio" id="title" value="title" checked>
             <label class="radio-inline">Title</label>
             <input type="radio" name="optradio" id="category" value="category">
