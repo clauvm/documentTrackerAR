@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "githubpage": "ng build --prod  --base-href ./ --outputPath=docs --base-href=https://nik1168.github.io/DocumentTracker/"
+    "githubpage": "ng build --prod  --base-href ./ --outputPath=docs --base-href=https://clauvm.github.io/documentTracker/"
   },
   "private": true,
   "dependencies": {
