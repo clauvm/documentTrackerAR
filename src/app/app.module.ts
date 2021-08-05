@@ -11,6 +11,7 @@ import { ScanItemsComponent } from './scan-items/scan-items.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {FormsModule} from '@angular/forms';
+import { UBookComponent } from './u-book/u-book.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule} from '@angular/forms';
     HomePageComponent,
     ULibraryComponent,
     AddItemsComponent,
-    ScanItemsComponent
+    ScanItemsComponent,
+    UBookComponent
   ],
     imports: [
         BrowserModule,

@@ -1,0 +1,39 @@
+<div class="details">
+    <table>
+        <tr>
+            <td rowspan="7" class="img-book">
+                <img style="height: 90% !important;" src="{{book.volumeInfo.imageLinks.thumbnail}}" class="tile-image">
+            </td>
+            <td class="book-dt book-title">
+                <label>{{book.volumeInfo.title}}</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="book-dt book-subtitle">
+                <label>{{book.volumeInfo.subtitle}}</label>
+            </td>
+        </tr>
+        <tr *ngFor="let author of book.volumeInfo.authors">
+            <td>
+                <label>By: {{author}}</label>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold">
+                <label>Category:</label>
+            </td>
+        </tr>
+        <tr *ngFor="let category of book.volumeInfo.categories">
+            <td>
+                <label>* {{category}}</label>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <p>{{book.volumeInfo.description}}</p>
+    </div>
+    <button (click)="getBook()">
+
+    </button>
+
+</div>

@@ -53,4 +53,24 @@ export class LibraryService {
         });
     }
 
+    getBook(id: string): Observable<Book> {
+        const url = 'https://www.googleapis.com/books/v1/volumes/' + id + '?key=AIzaSyCtZ1rAMgFCN5nes0tZCi5rCNJpwOGF9N0';
+        console.log('url');
+        console.log(url);
+        return new Observable<Book>(subscriber => {
+            this.http.get<any>(url)
+                .pipe(
+                    catchError(this.handleError<any>('getHeroes', {message: 'error', data: []}))
+                )
+                .subscribe((response) => {
+                    const book: Book = response;
+                    subscriber.next(book);
+                }, (error) => {
+                    subscriber.error(error);
+                }, () => {
+                    subscriber.complete();
+                });
+        });
+    }
+
 }
