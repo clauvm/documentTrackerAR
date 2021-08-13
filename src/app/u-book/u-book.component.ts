@@ -4,6 +4,7 @@ import {LibraryService} from '../library.service';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {Location} from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-u-book',
   templateUrl: './u-book.component.html',
@@ -30,7 +31,8 @@ export class UBookComponent implements OnInit {
 
   constructor(private libraryService: LibraryService,
               private route: ActivatedRoute,
-              private location: Location) { }
+              private location: Location,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.sub = this.route
@@ -57,6 +59,11 @@ export class UBookComponent implements OnInit {
             this.book.volumeInfo.description = this.book.volumeInfo.description.replace(/<\/i>/g, ' ');
             this.book.volumeInfo.description = this.book.volumeInfo.description.replace(/<b>/g, ' ').replace(/<\/b>/g, ' ');
         });
+  }
+
+  findBook(): void{
+      console.log('enters here');
+      this.router.navigate(['/scanBooks']);
   }
 
 }

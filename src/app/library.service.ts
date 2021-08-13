@@ -40,7 +40,7 @@ export class LibraryService {
         return new Observable<Book[]>(subscriber => {
             this.http.get<any>(url)
                 .pipe(
-                    catchError(this.handleError<any>('getHeroes', {message: 'error', data: []}))
+                    catchError(this.handleError<any>('getBooksList', {message: 'error', data: []}))
                 )
                 .subscribe((response) => {
                     const books: Book[] = response.items;
