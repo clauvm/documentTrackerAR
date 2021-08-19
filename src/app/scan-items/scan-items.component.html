@@ -1,8 +1,8 @@
-<div style='position: fixed; bottom: 10px; right: 40px; width:100%; text-align: right; z-index: 1;'>
-    <button style="font-size: xx-large">
-        <span id="textDirection">Read Marker scan</span>
-    </button>
-</div>
+<!--<div style='position: fixed; bottom: 10px; right: 40px; width:100%; text-align: right; z-index: 1;'>-->
+<!--    <button style="font-size: xx-large">-->
+<!--        <span id="textDirection">Read Marker scan</span>-->
+<!--    </button>-->
+<!--</div>-->
 <a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">
 
     <a-assets>
@@ -18,7 +18,7 @@
         <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
 
         <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
-        <a-text value="Go to .." font="../../assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+        <a-text value="Go to .." font="../../assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2" id="m00"></a-text>
 
         <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
         <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
@@ -27,13 +27,101 @@
         <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
 
     </a-marker>
-    <a-marker markerhandler type="pattern" url="assets/data/letterA.patt" id="m1">
+    <a-marker markerhandler type="pattern" url="../../assets/data/letterA.patt" id="m1">
 
         <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
         <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
 
         <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
-        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+        <a-text value="Go to .." font="../../assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2" id="nodeA"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+<!--        <a-image src="../../assets/images/Neon-left.png" height="1.5" width="1.5" rotation="0 0 0">-->
+<!--            <a-animation atribute="scale"-->
+<!--                         direction="alternate-reverse"-->
+<!--                         dur="350"-->
+<!--                         from="0 0 0"-->
+<!--                         to="-90 0 0"-->
+<!--                         repeat="indefinite"></a-animation>-->
+<!--        </a-image>-->
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+    <a-marker markerhandler type="pattern" url="../../assets/data/letterB.patt" id="m2">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="../../assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2" id="nodeB"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+<!--        <a-image src="../../assets/images/Neon-left.png" height="1.5" width="1.5" rotation="0 0 0">-->
+<!--            <a-animation atribute="scale"-->
+<!--                         direction="alternate-reverse"-->
+<!--                         dur="350"-->
+<!--                         from="0 0 0"-->
+<!--                         to="-90 0 0"-->
+<!--                         repeat="indefinite"></a-animation>-->
+<!--        </a-image>-->
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+    <a-marker markerhandler type="pattern" url="../../assets/data/letterC.patt" id="m3">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="../../assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2" id="nodeC"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+<!--        <a-image src="../../assets/images/Neon-left.png" height="1.5" width="1.5" rotation="0 0 0">-->
+<!--            <a-animation atribute="scale"-->
+<!--                         direction="alternate-reverse"-->
+<!--                         dur="350"-->
+<!--                         from="0 0 0"-->
+<!--                         to="-90 0 0"-->
+<!--                         repeat="indefinite"></a-animation>-->
+<!--        </a-image>-->
+
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+    <a-marker markerhandler type="pattern" url="../../assets/data/letterD.patt" id="m4">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="../../assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2" id="nodeD"></a-text>
+
+        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
+        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+
+<!--        <a-image src="../../assets/images/Neon-shelf.png" height="1.5" width="1.5" rotation="0 0 0">-->
+<!--            <a-animation atribute="scale"-->
+<!--                         direction="alternate-reverse"-->
+<!--                         dur="1300"-->
+<!--                         from="0 0 0"-->
+<!--                         to="-90 0 0"-->
+<!--                         repeat="indefinite"></a-animation>-->
+<!--        </a-image>-->
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
+
+    </a-marker>
+    <a-marker markerhandler type="pattern" url="../../assets/data/letterF.patt" id="m5">
+
+        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
+        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+
+        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
+        <a-text value="Go to .." font="../../assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2" id="nodeF"></a-text>
 
         <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
         <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
@@ -42,62 +130,57 @@
         <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
 
     </a-marker>
-    <a-marker markerhandler type="pattern" url="assets/data/letterB.patt" id="m2">
-
-        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
-        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
-
-        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
-        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
-
-        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
-        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
-
+    <a-marker markerhandler type="pattern" url="../../assets/data/pattern-1.patt" id="m6">
+        <a-image src="../../assets/images/Neon-down.png" height="1.5" width="1.5" rotation="0 0 0">
+            <a-animation atribute="scale"
+                         direction="alternate-reverse"
+                         dur="350"
+                         from="0 0 0"
+                         to="-90 0 0"
+                         repeat="indefinite"></a-animation>
+        </a-image>
 
         <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
 
     </a-marker>
-    <a-marker markerhandler type="pattern" url="assets/data/letterC.patt" id="m3">
 
-        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
-        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
-
-        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
-        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
-
-        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
-        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
-
-
-        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
-
-    </a-marker>
-    <a-marker markerhandler type="pattern" url="assets/data/letterD.patt" id="m4">
-
-        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
-        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
-
-        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
-        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
-
-        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
-        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
-
+    <a-marker markerhandler type="pattern" url="../../assets/data/pattern-2.patt" id="m7">
+        <a-image src="../../assets/images/Neon-Book.png" height="1.5" width="1.5" rotation="0 0 0">
+            <a-animation atribute="scale"
+                         direction="alternate-reverse"
+                         dur="1300"
+                         from="0 0 0"
+                         to="-90 0 0"
+                         repeat="indefinite"></a-animation>
+        </a-image>
 
         <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
 
     </a-marker>
-    <a-marker markerhandler type="pattern" url="assets/data/letterF.patt" id="m5">
 
-        <!-- positioning a plane directly below text for increased visibility; need to adjust position to avoid z-fighting.  -->
-        <a-plane color="white" rotation="-90 0 0" position="0 -0.25 0" width="3" material="transparent: true; opacity: 0.90"></a-plane>
+    <a-marker markerhandler type="pattern" url="../../assets/data/pattern-3.patt" id="m8">
+        <a-image src="../../assets/images/Neon-up.png" height="1.5" width="1.5" rotation="0 0 0">
+            <a-animation atribute="scale"
+                         direction="alternate-reverse"
+                         dur="350"
+                         from="0 0 0"
+                         to="-90 0 0"
+                         repeat="indefinite"></a-animation>
+        </a-image>
 
-        <!-- for more properties, see https://github.com/aframevr/aframe/blob/master/docs/components/text.md -->
-        <a-text value="Go to .." font="assets/fonts/Exo2Bold.fnt" color="red" rotation="-90 0 0" align="center" scale="2 2 2"></a-text>
+        <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
 
-        <!-- positioning a second copy to attempt drop-shadow effect; need to adjust position to avoid z-fighting -->
-        <!-- <a-text value="Hello, world!" font="fonts/Exo2Bold.fnt" color="black" rotation="-90 0 0" align="center" scale="2 2 2" position="0.01 -0.2 0"></a-text> -->
+    </a-marker>
 
+    <a-marker markerhandler type="pattern" url="../../assets/data/pattern-4.patt" id="m9">
+        <a-image src="../../assets/images/Neon-up.png" height="1.5" width="1.5" rotation="0 0 0">
+            <a-animation atribute="scale"
+                         direction="alternate-reverse"
+                         dur="350"
+                         from="0 0 0"
+                         to="-90 0 0"
+                         repeat="indefinite"></a-animation>
+        </a-image>
 
         <!-- avoiding z-fighting is difficult; may want to render canvas to text instead -->
 

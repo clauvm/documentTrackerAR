@@ -35,7 +35,7 @@ function initialise(){
             if (!this.marker) { return; }
             if (this.marker.object3D.visible) {
                 console.log('Entro aqui papa');
-                this.getElementById('textDirection').innerHTML = 'Left';
+                this.getElementById('textDirection').innerHTML = 'Left marker hand';
                 if (!this.markerVisible) {
                     // marker detected
                     this.markerVisible = true;
@@ -49,7 +49,7 @@ function initialise(){
             //     }
             // }
             if (this.markerA.object3D.visible) {
-                this.getElementById('textDirection').innerHTML = 'Left';
+                this.getElementById('textDirection').innerHTML = 'Left marker hand';
 
             }
             if (this.markerB.object3D.visible) {

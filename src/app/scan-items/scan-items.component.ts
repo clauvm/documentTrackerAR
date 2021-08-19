@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // import * as AFRAME from 'aframe';
-import * as THREE from 'three';
 import * as custom from '../../assets/extra-functions/test.js';
 
 
@@ -10,8 +9,9 @@ import * as custom from '../../assets/extra-functions/test.js';
   styleUrls: ['./scan-items.component.scss']
 })
 export class ScanItemsComponent implements OnInit {
-
-  constructor() { }
+  nodeLoc: any;
+  nodeDir: any;
+  constructor() {}
 
   testFunction(){
     custom.myTest();
@@ -20,125 +20,99 @@ export class ScanItemsComponent implements OnInit {
   ngOnInit(): void {
     console.log('Init script to register events');
     const markerVisible = {m0: false, m1: false};
-    // custom.test1(document);
-    // AFRAME.registerComponent('hello-world', {
-    //   init() {
-    //     console.log('Hello, World!');
-    //   }
-    // });
-    // AFRAME.registerComponent('markerhandler', {
-    //   init() {
-    //     console.log('Hellooooooooooo');
-    //   }
-    // });
+    this.nodeLoc = {
+      nodeA: {nodeB: 1},
+      nodeB: {nodeA: 1, nodeC: 1, nodeD: 1},
+      nodeC: {nodeB: 1, nodeD: 1},
+      nodeD: {nodeB: 1, nodeC: 1}
+    };
+    this.nodeDir = {
+      nodeA: {nodeB: 'right'},
+      nodeB: {nodeA: 'left', nodeC: 'right', nodeD: 'turn around'},
+      nodeC: {nodeB: 'left', nodeD: 'turn around - right'},
+      nodeD: {nodeB: 'turn around', nodeC: 'turn around - right'}
+    };
+    console.log('Cruzando dedos');
+    const a = this.findShortestPath('nodeA', 'nodeD');
+    console.log(this.findShortestPath('nodeA', 'nodeD'));
+    a.path.forEach((value, index) => {
+      document.getElementById(value).setAttribute('value', a.indication[index] );
+    });
 
-    // AFRAME.registerComponent('markerhandler', {
-    //   init() {
-    //     console.log('it\'s here!!!!');
-    //     // let marker = this.el;
-    //     //
-    //     // console.log("Init event for marker handler");
-    //     // marker.addEventListener('markerFound', function () {
-    //     //     console.log("Found")
-    //     // });
-    //     //
-    //     // marker.addEventListener('markerLost', function () {
-    //     //     console.log("Lost")
-    //     // });
-    //     this.marker = document.querySelector('#m0');
-    //     this.markerA = document.querySelector('#m1');
-    //     this.markerB = document.querySelector('#m2');
-    //     this.markerC = document.querySelector('#m3');
-    //     this.markerD = document.querySelector('#m4');
-    //     this.markerF = document.querySelector('#m5');
-    //     // this.marker1 = document.querySelector("#hiThere");
-    //     // this.marker1.addEventListener('markerFound', function () {
-    //     //     console.log("Found")
-    //     // });
-    //     //
-    //     // this.marker1.addEventListener('markerLost', function () {
-    //     //     console.log("Lost")
-    //     // });
-    //     this.markerVisible = false;
-    //
-    //     console.log('End of marker handler event');
-    //   },
-    //   tick(time, deltaTime) {
-    //     if (!this.marker) { return; }
-    //     if (this.marker.object3D.visible) {
-    //       console.log('Entro aqui papa');
-    //       this.getElementById('textDirection').innerHTML = 'Left';
-    //       if (!this.markerVisible) {
-    //         // marker detected
-    //         this.markerVisible = true;
-    //       }
-    //     }
-    //     // else {
-    //     //     // document.getElementById("textDirection").innerHTML = "Read Marker";
-    //     //     if (this.markerVisbile) {
-    //     //         // lost sight of the marker
-    //     //         this.markerVisible = false
-    //     //     }
-    //     // }
-    //     if (this.markerA.object3D.visible) {
-    //       this.getElementById('textDirection').innerHTML = 'Left';
-    //
-    //     }
-    //     if (this.markerB.object3D.visible) {
-    //       this.getElementById('textDirection').innerHTML = 'Turn Around';
-    //     }
-    //     if (this.markerC.object3D.visible) {
-    //       this.getElementById('textDirection').innerHTML = 'Found';
-    //     }
-    //   }
-    // });
-    //
-    // AFRAME.registerComponent('registerevents', {
-    //   init() {
-    //     const marker = this.el;
-    //
-    //     marker.addEventListener('markerFound', () => {
-    //       markerVisible[marker.id] = true;
-    //     });
-    //
-    //     marker.addEventListener('markerLost', () => {
-    //       markerVisible[marker.id] = false;
-    //     });
-    //   },
-    //   tick(time, deltaTime) {
-    //     console.log('Tick');
-    //   }
-    // });
-    //
-    // AFRAME.registerComponent('run', {
-    //   init() {
-    //     this.m0 = this.querySelector('#m0');
-    //     this.m1 = this.querySelector('#m1');
-    //     this.p0 = new THREE.Vector3();
-    //     this.p1 = new THREE.Vector3();
-    //
-    //     this.geometry = new THREE.Geometry();
-    //     this.geometry.vertices.push(new THREE.Vector3(-1, -1, -1));
-    //     this.geometry.vertices.push(new THREE.Vector3(1, 1, 1));
-    //     this.material = new THREE.LineBasicMaterial({color: 0xFF0000});
-    //     this.line = new THREE.Line(this.geometry, this.material);
-    //     const scene = this.querySelector('a-scene').object3D;
-    //     scene.add(this.line);
-    //   },
-    //
-    //   tick(time, deltaTime) {
-    //     if (markerVisible.m0 && markerVisible.m1) {
-    //       this.m0.object3D.getWorldPosition(this.p0);
-    //       this.m1.object3D.getWorldPosition(this.p1);
-    //       this.geometry.vertices[0] = this.p0;
-    //       this.geometry.vertices[1] = this.p1;
-    //       this.geometry.verticesNeedUpdate = true;
-    //       this.line.visible = true;
-    //     } else {
-    //       this.line.visible = false;
-    //     }
-    //   }
-    // });
+    // console.log(document.getElementById('m00'));
   }
 
+  shortestDistanceNode = (distances, visited) => {
+    // create a default value for shortest
+    let shortest = null;
+
+    // for each node in the distances object
+    // tslint:disable-next-line:forin
+    for (const node in distances) {
+      // if no node has been assigned to shortest yet
+      // or if the current node's distance is smaller than the current shortest
+      const currentIsShortest =
+          shortest === null || distances[node] < distances[shortest];
+
+      // and if the current node is in the unvisited set
+      if (currentIsShortest && !visited.includes(node)) {
+        // update shortest to be the current node
+        shortest = node;
+      }
+    }
+    return shortest;
+  }
+
+  findShortestPath = (startNode, endNode) => {
+    let distances = {};
+    distances[endNode] = 'Infinity';
+    distances = Object.assign(distances, this.nodeLoc[startNode]);
+
+    const parents = { endNode: null };
+    for (const child in this.nodeLoc[startNode]) {
+      parents[child] = startNode;
+    }
+    const visited = [];
+
+    // find the nearest node
+    let node = this.shortestDistanceNode(distances, visited);
+    while (node){
+      const distance = distances[node];
+      const children = this.nodeLoc[node];
+      for (const child in children) {
+        if (String(child) === String(startNode)) {
+          continue;
+        } else {
+          const newdistance = distance + children[child];
+          if (!distances[child] || distances[child] > newdistance) {
+            distances[child] = newdistance;
+            parents[child] = node;
+          }
+        }
+      }
+      visited.push(node);
+      node = this.shortestDistanceNode(distances, visited);
+    }
+    const direction = [];
+    const shortestPath = [endNode];
+    let parent = parents[endNode];
+    while (parent) {
+      shortestPath.push(parent);
+      parent = parents[parent];
+    }
+    shortestPath.reverse();
+    for (let i = 0; i < shortestPath.length - 1; i++){
+      const a = this.nodeDir[shortestPath[i]];
+      const b = a[shortestPath[i + 1]];
+      direction.push(b);
+    }
+    direction.push('Found!!!');
+    console.log('directions');
+    console.log(direction);
+    return {
+      distance: distances[endNode],
+      path: shortestPath,
+      indication: direction
+    };
+  }
 }
